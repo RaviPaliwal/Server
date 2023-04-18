@@ -7,7 +7,7 @@ const fs = require('fs')
 // CREATE a new news article
 router.post('/add', uploadnewsimage, async (req, res) => {
     const img = {
-        data: req.file.buffer,
+        data: req.file.filename,
         contentType: req.file.mimetype,
         extention: path.extname(req.file.originalname),
         path: req.body.mypath,
