@@ -17,9 +17,7 @@ app.use(cors());
 
 //This is Exposed Folder For Frontend\
 app.use(express.static(path.join(__dirname, 'build')));
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+
 
 // Exposed Folders
 app.use('/images',express.static('./Uploads/Images/'))
@@ -38,13 +36,9 @@ app.use('/api/pdf', require('./Routes/pdfroute'))
 app.use('/api', require('./Routes/industrycolab'))
 app.use('/api/news', require('./Routes/newsroute'))
 
-// if You need to access the all backend routes saperately from brouser or any other app
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
-
-// Remove the code from above
-
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
   app.listen(port, () => {
     console.log(`Data Base is On Port ${port}`)
